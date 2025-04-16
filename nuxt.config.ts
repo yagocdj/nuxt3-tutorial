@@ -10,7 +10,10 @@ export default defineNuxtConfig({
     baseURL: "/",
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@pinia/nuxt"],
+  modules: [
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+  ],
   pinia: {
     storesDirs: ["./stores/**"]
   }

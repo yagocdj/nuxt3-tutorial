@@ -16,4 +16,8 @@ export const useVideoStore = defineStore("video", () => {
   };
 
   return { adicionarFavorito, deletarFavorito, favoritos };
+}, {
+  persist: {
+    storage: persistedState.sessionStorage,
+  }
 });
