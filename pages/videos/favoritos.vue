@@ -13,16 +13,22 @@
       />
 
       <div>
-        <button @click="videoStore.deletarFavorito(video.id)">Remover favorito</button>
+        <button @click="removerFavorito(video.id)">Remover favorito</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+const { $toast } = useNuxtApp();
+
 const videoStore = useVideoStore();
 const { favoritos } = storeToRefs(videoStore);
 
+const removerFavorito = (id: number) => {
+  videoStore.deletarFavorito(id);
+  $toast.error("Vídeo removido dos favoritos!");
+};
 
 // const favoritos = useFavoritos();
 
