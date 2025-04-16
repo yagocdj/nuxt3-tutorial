@@ -6,7 +6,8 @@
 
 <script setup>
 definePageMeta({
-  layout: "exibicao"
+  layout: "exibicao",
+  middleware: ["video", "auth"]
 });
 const route = useRoute();
 
