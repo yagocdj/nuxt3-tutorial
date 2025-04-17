@@ -1,20 +1,23 @@
 <template>
-  <div>vídeos favoritos</div>
+  <div>
+    <h1 class="text-4xl text-center mb-4">{{ $t("tituloFavoritos") }}</h1>
+    <div>
+      <div
+        class="grid grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4"
+      >
+        <UCard v-for="video in favoritos" :key="video.id">
+          {{ video.descricao }}
 
-  <div class="videos">
-    <h1>{{ $t("tituloFavorito") }}</h1>
-    <div v-for="video in favoritos" :key="video.id">
-      <h2>{{ video.descricao }}</h2>
-      <iframe
-        width="550"
-        height="400"
-        :src="video.url"
-        title="YouTube video player"
-        frameborder="0"
-      />
-
-      <div>
-        <button @click="removerFavorito(video.id)">Remover favorito</button>
+          <iframe
+            class="h-48 w-full"
+            :src="video.url"
+            title="YouTube video player"
+            frameborder="0"
+          />
+          <UButton @click="removerFavorito(video.id)">
+            Remover Favorito
+          </UButton>
+        </UCard>
       </div>
     </div>
   </div>

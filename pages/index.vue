@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Header />
-    <div>Página inicial</div>
+    <div class="text-5xl text-center">Página inicial</div>
   </div>
 </template>
 
