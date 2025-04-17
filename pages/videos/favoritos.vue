@@ -2,6 +2,7 @@
   <div>vídeos favoritos</div>
 
   <div class="videos">
+    <h1>{{ $t("tituloFavorito") }}</h1>
     <div v-for="video in favoritos" :key="video.id">
       <h2>{{ video.descricao }}</h2>
       <iframe
