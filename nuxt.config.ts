@@ -21,5 +21,6 @@ export default defineNuxtConfig({
   },
   pinia: {
     storesDirs: ["./stores/**"]
-  }
+  },
+  debug: true,
 });

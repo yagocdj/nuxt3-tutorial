@@ -9,6 +9,7 @@ export default () => {
     { nome: "Videos", path: "/videos" },
     { nome: "Adicionar videos", path: "/videos/adicionar" },
     { nome: "Favoritos", path: "/videos/favoritos" },
+    { nome: "Clientes", path: "/clientes" },
   ];
   return rotas;
 }
