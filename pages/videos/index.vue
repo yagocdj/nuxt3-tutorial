@@ -45,7 +45,7 @@ const { $toast } = useNuxtApp();
 // const favoritos = useFavoritos();
 const { adicionarFavorito } = useVideoStore();
 
-const videos = ref<Video[]>([]);
+const { data: videos, error } = await useFetch('/api/v1/videos');
 
 // const adicionaFavorito = (video: Video) => {
 //   favoritos.value.push(video);
@@ -56,8 +56,10 @@ const favoritar = (video: Video) => {
   $toast.success("Adicionado aos favoritos!");
 };
 
-onMounted(async () => {
-  videos.value = await $fetch('/api/v1/videos');
+onMounted(() => {
+  if (error.value) {
+    $toast.error(error.value.statusMessage || "");
+  }
 });
 
 </script>
