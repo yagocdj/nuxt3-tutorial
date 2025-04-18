@@ -1,11 +1,15 @@
 <template>
   <h1 class="text-4xl text-center">{{ $t("titulo") }}</h1>
-  <div class="grid grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4">
+  <div
+    class="grid grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4"
+  >
     <UCard v-for="video in videos" :key="video.id">
       <template #header>
         <h2>{{ video.descricao }}</h2>
       </template>
   
+      {{ formataData(video.data_postagem) }}
+
       <iframe
           class="h-48 w-full"
           :src="video.url"
@@ -34,6 +38,7 @@
 
 <script setup lang="ts">
 import type { Video } from '~/interfaces/video';
+import formataData from '~/utils/formataData';
 
 const { $toast } = useNuxtApp();
 
