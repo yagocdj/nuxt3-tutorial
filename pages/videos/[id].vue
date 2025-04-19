@@ -1,59 +1,61 @@
 <template>
   <div>
+    <div>
+      <UButton
+        icon="i-heroicons-pencil-square"
+        size="sm"
+        color="primary"
+        variant="solid"
+        label="Editar"
+        :trailing="false"
+        @click="abrirModal"
+      />
+
+      <UModal v-model:open="isOpen">
+        <template #content>
+          <div class="p-4">
+            <UForm
+              :validate="validate"
+              :state="state"
+              class="space-y-4"
+              @submit="onSubmit"
+            >
+              <UFormField label="descricao" name="descricao">
+                <UInput v-model="state.descricao" />
+              </UFormField>
+
+              <UFormField label="url" name="url">
+                <UInput v-model="state.url" type="url" />
+              </UFormField>
+
+              <UButton type="submit"> Enviar </UButton>
+            </UForm>
+          </div>
+        </template>
+      </UModal>
+    </div>
+
+    <UCard class="w-[800px] justify-center">
+      <template #header>
+        {{ video.descricao }}
+      </template>
+
+      <iframe
+        class="h-[500px] w-full"
+        :src="video.url"
+        title="YouTube video player"
+        frameborder="0"
+      />
+    </UCard>
     <UButton
       icon="i-heroicons-pencil-square"
       size="sm"
-      color="primary"
       variant="solid"
-      label="Editar"
+      label="Deletar"
       :trailing="false"
-      @click="abrirModal"
+      @click="deletarVideo"
     />
-
-    <UModal v-model:open="isOpen">
-      <template #content>
-        <div class="p-4">
-          <UForm
-            :validate="validate"
-            :state="state"
-            class="space-y-4"
-            @submit="onSubmit"
-          >
-            <UFormField label="descricao" name="descricao">
-              <UInput v-model="state.descricao" />
-            </UFormField>
-  
-            <UFormField label="url" name="url">
-              <UInput v-model="state.url" type="url" />
-            </UFormField>
-  
-            <UButton type="submit"> Enviar </UButton>
-          </UForm>
-        </div>
-      </template>
-    </UModal>
   </div>
-
-  <UCard class="w-[800px] justify-center">
-    <template #header>
-      {{ video.descricao }}
-    </template>
-
-    <iframe
-      class="h-[500px] w-full"
-      :src="video.url"
-      title="YouTube video player"
-      frameborder="0"
-    />
-  </UCard>
-  <UButton
-    icon="i-heroicons-pencil-square"
-    size="sm"
-    variant="solid"
-    label="Deletar"
-    :trailing="false"
-    @click="deletarVideo"
-  />
 </template>
 
 <script setup lang="ts">

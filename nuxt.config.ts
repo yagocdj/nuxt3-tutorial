@@ -8,6 +8,8 @@ export default defineNuxtConfig({
   },
   app: {
     baseURL: "/",
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   css: ["~/assets/css/main.css"],
   modules: [

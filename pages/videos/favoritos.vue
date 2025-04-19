@@ -24,6 +24,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: "exibicao",
+});
+
 const { $toast } = useNuxtApp();
 
 const videoStore = useVideoStore();
