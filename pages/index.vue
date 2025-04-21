@@ -4,4 +4,15 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const tituloSite = "Pablo Codes - Tutoriais";
+
+useHead({
+  title: tituloSite,
+  meta: [
+    {
+      name: "description",
+      content: "Site de tutorias de VueJS/NuxtJS",
+    },
+  ],
+});</script>

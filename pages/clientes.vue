@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Head>
+      <Title>Clientes</Title>
+      <Meta name="description" content="Teste" />
+      <Style type="text/css"> body { background-color: green;}</Style>
+    </Head>
     <h1 class="text-5xl text-center my-4">Clientes</h1>
     {{ status }}
     <button

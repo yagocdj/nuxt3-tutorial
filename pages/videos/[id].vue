@@ -37,12 +37,12 @@
 
     <UCard class="w-[800px] justify-center">
       <template #header>
-        {{ video.descricao }}
+        {{ video?.descricao }}
       </template>
 
       <iframe
         class="h-[500px] w-full"
-        :src="video.url"
+        :src="video?.url"
         title="YouTube video player"
         frameborder="0"
       />
@@ -71,7 +71,14 @@ const isOpen = ref(false);
 const route = useRoute();
 const { id } = route.params;
 
-const { data: video } = await useFetch(`/api/v1/videos/${id}`);
+const { data: video } = await useFetch<Video>(`/api/v1/videos/${id}`);
+
+useSeoMeta({
+  title: "Nuxt 3 SEO META",
+  ogDescription: video.value?.descricao || "",
+  ogUrl: video.value?.url || "",
+  ogType: "video.other",
+});
 
 if (!video.value) {
   throw createError({
@@ -111,9 +118,9 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 }
 
 const abrirModal = () => {
-  state.descricao = video.value.descricao;
-  state.url = video.value.url;
-  state.id = video.value.id;
+  state.descricao = video.value?.descricao || "";
+  state.url = video.value?.url || "";
+  state.id = video.value?.id || 0;
   isOpen.value = true;
 };
 
